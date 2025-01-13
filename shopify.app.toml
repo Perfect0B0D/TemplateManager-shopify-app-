@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "cef8367204386a02928eadeeaf19e11a"
+application_url = "https://user-template-manager.vercel.app"
+embedded = true
+name = "user_template_mananger"
+handle = "user_template_mananger"
+
+[webhooks]
+api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://user-template-manager.vercel.app/auth/callback",
+  "https://user-template-manager.vercel.app/auth/shopify/callback",
+  "https://user-template-manager.vercel.app/api/auth/callback"
+]
+
+[pos]
+embedded = false
+
+[build]
+dev_store_url = "mytoystorebear.myshopify.com"
+automatically_update_urls_on_dev = true
